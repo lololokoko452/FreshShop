@@ -11,7 +11,7 @@ class AdminController extends Controller
 
     public function addCategory()
     {
-        return view("admin.addcategory");
+        return view("admin.addCategory");
     }
 
     public function categories()
@@ -27,5 +27,15 @@ class AdminController extends Controller
     public function sliders()
     {
         return view("admin.sliders");
+    }
+
+    public function addProduct()
+    {
+        return view("admin.addProduct");
+    }
+
+    public function products()
+    {
+        return view("admin.products");
     }
 }
