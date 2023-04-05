@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="why-text">
                                                     <h4>Lorem ipsum dolor sit amet</h4>
-                                                    <h5> $9.79</h5>
+                                                    <h5> $99.79</h5>
                                                 </div>
                                             </div>
                                         </div>
