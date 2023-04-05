@@ -13,4 +13,19 @@ class AdminController extends Controller
     {
         return view("admin.addcategory");
     }
+
+    public function categories()
+    {
+        return view("admin.categories");
+    }
+
+    public function addSlider()
+    {
+        return view("admin.addSlider");
+    }
+
+    public function sliders()
+    {
+        return view("admin.sliders");
+    }
 }

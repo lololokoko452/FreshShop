@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 //Client Controller
 Route::group([
         "as" => "client.",
-    "prefix" => "client "
     ], function (){
         Route::get('/', [ClientController::class, 'home'])->name('home');
         Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
@@ -35,4 +34,7 @@ Route::group([
 ], function (){
     Route::get('/', [AdminController::class, 'home'])->name('home');
     Route::get('/addCategory', [AdminController::class, 'addCategory'])->name('addCategory');
+    Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+    Route::get('/addSlider', [AdminController::class, 'addSlider'])->name('addSlider');
+    Route::get('/sliders', [AdminController::class, 'sliders'])->name('sliders');
 });
