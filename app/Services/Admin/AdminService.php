@@ -29,13 +29,13 @@ class AdminService
 
     /**
      * @param string $modelClass
-     * @param Collection $validatedRequest
+     * @param array $validatedRequest
      * @return Model
      */
-    public function create(string $modelClass, Collection $validatedRequest): Model
+    public function create(string $modelClass, array $validatedRequest): Model
     {
         $model = new $modelClass;
-        $model->fill($validatedRequest->toArray());
+        $model->fill($validatedRequest);
 
         try {
             $model->save();

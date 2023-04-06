@@ -36,23 +36,16 @@
                                 <h3 class="card-title">Add category</h3>
                             </div>
                             <!-- /.card-header -->
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
                             <!-- form start -->
                             <form action="{{ route("admin.category.store") }}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Category name</label>
-                                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter category">
+                                        <label for="category.name">Category name</label>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter category" >
+                                        @error('name')
+                                        <small class="text-danger"><em>{{ $message }}</em></small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -77,5 +70,9 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+@endsection
+
+@section('scripts')
 
 @endsection
