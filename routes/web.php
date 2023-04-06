@@ -39,4 +39,5 @@ Route::group([
     Route::get('/sliders', [AdminController::class, 'sliders'])->name('sliders');
     Route::get('/addProduct', [AdminController::class, 'addProduct'])->name('addProduct');
     Route::get('/products', [AdminController::class, 'products'])->name('products');
+    Route::get('/orders', [AdminController::class, 'orders'])->name('orders');
 });
