@@ -33,15 +33,26 @@
                         <!-- jquery validation -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add category</small></h3>
+                                <h3 class="card-title">Add category</h3>
                             </div>
                             <!-- /.card-header -->
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             <!-- form start -->
-                            <form>
+                            <form action="{{ route("admin.category.store") }}" method="POST">
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Category name</label>
-                                        <input type="text" name="category_name" class="form-control" id="exampleInputEmail1" placeholder="Enter category" required>
+                                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter category">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
