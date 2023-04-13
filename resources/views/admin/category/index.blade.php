@@ -93,6 +93,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset("backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css") }}">
     <link rel="stylesheet" href="{{ asset("backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css") }}">
+    <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
 @endsection
 
 @section('scripts')
@@ -101,6 +102,8 @@
     <script src="{{ asset("backend/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
     <script src="{{ asset("backend/plugins/datatables-responsive/js/dataTables.responsive.min.js") }}"></script>
     <script src="{{ asset("backend/plugins/datatables-responsive/js/responsive.bootstrap4.min.js") }}"></script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
 
     <!-- page script -->
     <script>
@@ -120,4 +123,17 @@
             });
         });
     </script>
+
+
+    @if(Session::has("toast_success"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: 'Catégorie créée avec succès !',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection

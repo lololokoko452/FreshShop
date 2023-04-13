@@ -73,6 +73,22 @@
 
 @endsection
 
-@section('scripts')
+@section('styles')
+    <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
+@endsection
 
+@section('scripts')
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    @if(Session::has("toast_error"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: 'Erreur',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection
