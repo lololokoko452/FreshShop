@@ -14,18 +14,12 @@ class AdminService
      * @param Collection $validatedRequest
      * @return Model
      */
-    /*public function update(Model $model, Collection $validatedRequest): Model
+    public function update(Model $model, array $validatedRequest): Model
     {
-        if ($validatedRequest->has('zipcode') && empty($validatedRequest->get('zipcode'))) {
-            $validatedRequest->put('city', null);
-        }
-        if ($validatedRequest->has('licence_zipcode') && empty($validatedRequest->get('licence_zipcode'))) {
-            $validatedRequest->put('licence_city', null);
-        }
-        $model->update($validatedRequest->toArray());
+        $model->update($validatedRequest);
 
         return $model;
-    }*/
+    }
 
     /**
      * @param string $modelClass

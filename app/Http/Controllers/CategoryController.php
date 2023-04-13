@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 use App\Services\Admin\CategoryService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -27,9 +28,20 @@ class CategoryController extends Controller
         try {
             $category = $categoryService->saveNewCategory($request);
 
-            return redirect()->route('admin.category.index')->with('success', 'Catégorie créée avec succès !');
+            return redirect()->route('admin.category.index')->with('success', 'Category created successfuly');
         } catch (\Exception $e) {
             return redirect()->route('admin.category.new')->with('error', 'Une erreur est survenue');
+        }
+    }
+
+    public function update(CategoryRequest $request, CategoryService $categoryService, Category $category): RedirectResponse
+    {
+        try {
+            $categoryService->updateCategory($category, $request);
+
+            return redirect()->route('admin.category.index', $category)->with('success', 'Category modified.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.category.edit', $category)->with('error', 'Error');
         }
     }
 

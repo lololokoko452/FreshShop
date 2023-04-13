@@ -14,12 +14,12 @@ class CategoryRequest extends FormRequest
 
     public function rules()
     {
-        $category = $this->route('category');
+        $entityId = $this->route()->parameter('category')?->id;
 
         return [
             'name' => [
                 'required',
-                Rule::unique('categories', 'name')
+                Rule::unique('categories', 'name')->ignore($entityId),
             ],
         ];
     }
@@ -27,8 +27,8 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Le nom de la catégorie est requis.',
-            'name.unique' => 'Le nom de la catégorie doit être unique.'
+            'name.required' => 'The category name is required.',
+            'name.unique' => 'The gategory name must be unique.'
         ];
     }
 }

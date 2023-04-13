@@ -13,4 +13,9 @@ class CategoryService extends AdminService
     {
         return $this->create(Category::class, $request->validated());
     }
+
+    public function updateCategory(Category $category, CategoryRequest $request)
+    {
+        return $this->update($category, $request->validated());
+    }
 }
