@@ -44,26 +44,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                        @foreach($categories as $category)
+                                            <tr>
+                                                <td>{{ $category->id }}</td>
+                                                <td>{{ $category->name }}</td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                                    <a href="{{ route("admin.category.delete", compact("category")) }}" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -124,14 +114,16 @@
         });
     </script>
 
-
-    @if(Session::has("toast_success"))
+    @if(Session::has("success"))
         <script>
             document.addEventListener("DOMContentLoaded", function(event) {
                 Swal.fire({
-                    title: 'Catégorie créée avec succès !',
+                    title: '{{ Session::get("success") }}',
                     icon: 'success',
-                    confirmButtonText: 'OK'
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
                 });
             });
         </script>

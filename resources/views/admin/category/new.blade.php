@@ -80,13 +80,16 @@
 @section('scripts')
     <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 
-    @if(Session::has("toast_error"))
+    @if(Session::has("error"))
         <script>
             document.addEventListener("DOMContentLoaded", function(event) {
                 Swal.fire({
-                    title: 'Erreur',
+                    title: '{{ Session::get("error") }}',
                     icon: 'warning',
-                    confirmButtonText: 'OK'
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
                 });
             });
         </script>
