@@ -49,7 +49,7 @@
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                                    <a href="{{ route("admin.category.edit", compact("category")) }}" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
                                                     <a href="{{ route("admin.category.delete", compact("category")) }}" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
                                                 </td>
                                             </tr>

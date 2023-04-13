@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Category;
 use App\Services\Admin\CategoryService;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -14,9 +15,11 @@ class CategoryController extends Controller
         return view("admin.category.index", compact('categories'));
     }
 
-    public function new()
+    public function form(Category|null $category): View
     {
-        return view("admin.category.new");
+        $formAction = $category?->id ? route('admin.category.update', $category) : route('admin.category.store');
+
+        return view("admin.category.form", compact("category", "formAction"));
     }
 
     public function store(CategoryRequest $request, CategoryService $categoryService)

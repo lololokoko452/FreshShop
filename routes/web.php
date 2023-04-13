@@ -44,8 +44,10 @@ Route::group([
         "as" => "category."
     ], function (){
         Route::get('/index', [CategoryController::class, 'index'])->name('index');
-        Route::get('/new', [CategoryController::class, 'new'])->name('new');
+        Route::get('/form', [CategoryController::class, 'form'])->name('new');
         Route::post('/store', [CategoryController::class, 'store'])->name('store');
+        Route::get('/form/{category}', [CategoryController::class, 'form'])->name('edit');
+        Route::get('/update/{category}', [CategoryController::class, 'update'])->name('update');
         Route::get('/delete/{category}', [CategoryController::class, 'delete'])->name('delete');
     });
 

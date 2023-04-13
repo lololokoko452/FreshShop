@@ -1,7 +1,7 @@
 @extends('admin_layout.master')
 
 @section('title')
-    Add Category
+    Category
 @endsection
 
 @section('content')
@@ -32,27 +32,33 @@
                     <div class="col-md-12">
                         <!-- jquery validation -->
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Add category</h3>
-                            </div>
+                            @include('includes.forms.form-header', [
+                                'entity' => $category,
+                                'editTitle' => 'Category edit : ' . $category->name,
+                                'newTitle' => 'New category',
+                                'listUrl' => route('admin.category.index')
+                            ])
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ route("admin.category.store") }}" method="POST">
+                            <form action="{{ $formAction }}" method="POST">
+                                @if($category->id)
+                                    @method('PUT')
+                                @endif
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="category.name">Category name</label>
-                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter category" >
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name"
+                                               value="{{ old('category.name', $category->name) }}" placeholder="Enter category" >
                                         @error('name')
                                         <small class="text-danger"><em>{{ $message }}</em></small>
                                         @enderror
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                    <input type="submit" class="btn btn-primary" value="Save" >
-                                </div>
+                                @include('includes.forms.form-footer', [
+                                    'entity' => $category
+                                ])
                             </form>
                         </div>
                         <!-- /.card -->

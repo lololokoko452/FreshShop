@@ -40,8 +40,8 @@
                     </ul>
                 </li>
 
-                <li class="nav-item has-treeview {{request()->is('admin/category/index') || request()->is('admin/category/new') ? 'menu-open' : ''}}">
-                    <a href="" class="nav-link {{request()->is('admin/category/index') || request()->is('admin/category/new') ? 'active' : ''}}">
+                <li class="nav-item has-treeview {{request()->is('admin/category/index') || request()->is('admin/category/form') ? 'menu-open' : ''}}">
+                    <a href="" class="nav-link {{request()->is('admin/category/index') || request()->is('admin/category/form') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Categories
@@ -50,7 +50,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.category.new') }}" class="nav-link {{request()->is('admin/category/new') ? 'active' : ''}}">
+                            <a href="{{ route('admin.category.new') }}" class="nav-link {{request()->is('admin/category/form') ? 'active' : ''}}">
                                 <i class="far fa-file nav-icon"></i>
                                 <p>Add category</p>
                             </a>
