@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Admin\Controller;
 use App\Http\Requests\Client\ClientRequest;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Slider;
@@ -18,7 +19,8 @@ class ClientController extends Controller
     {
         $sliders = Slider::where('status', true)->get();
         $products = Product::all();
-        return view("client.home", compact("sliders", "products"));
+        $categories = Category::all();
+        return view("client.home", compact("sliders", "products", "categories"));
     }
 
     public function shop()
