@@ -26,11 +26,11 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request, CategoryService $categoryService)
     {
         try {
-            $category = $categoryService->saveNewCategory($request);
+            $categoryService->saveNewCategory($request);
 
             return redirect()->route('admin.category.index')->with('success', 'Category created successfuly');
         } catch (\Exception $e) {
-            return redirect()->route('admin.category.new')->with('error', 'Une erreur est survenue');
+            return redirect()->route('admin.category.new')->with('error', 'Error');
         }
     }
 
@@ -48,7 +48,7 @@ class CategoryController extends Controller
     public function delete(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.category.index')->with('success', 'Catégorie supprimée avec succès !');
+        return redirect()->route('admin.category.index')->with('success', 'Category deleted !');
     }
 
 }

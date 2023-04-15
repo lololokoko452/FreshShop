@@ -68,14 +68,14 @@
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image">
                                             <label class="custom-file-label" for="image">Choose file</label>
-                                            @error('image')
-                                            <small class="text-danger"><em>{{ $message }}</em></small>
-                                            @enderror
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                     </div>
+                                    @error('image')
+                                    <small class="text-danger"><em>{{ $message }}</em></small>
+                                    @enderror
                                 </div>
                                 <!-- /.card-body -->
                                 @include('includes.forms.form-footer', [
