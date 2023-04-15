@@ -61,7 +61,6 @@ Route::group([
         Route::get('/form/{slider}', [SliderController::class, 'form'])->name('edit');
         Route::put('/update/{slider}', [SliderController::class, 'update'])->name('update');
         Route::get('/status/{slider}', [SliderController::class, 'status'])->name('status');
-
         Route::get('/delete/{slider}', [SliderController::class, 'delete'])->name('delete');
 
     });
@@ -71,7 +70,11 @@ Route::group([
         "as" => "product."
     ], function (){
         Route::get('/index', [ProductController::class, 'index'])->name('index');
-        Route::get('/new', [ProductController::class, 'new'])->name('new');
+        Route::get('/form', [ProductController::class, 'form'])->name('new');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        Route::get('/form/{product}', [ProductController::class, 'form'])->name('edit');
+        Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
+        Route::get('/delete/{product}', [ProductController::class, 'delete'])->name('delete');
     });
 
     Route::group([

@@ -1,7 +1,7 @@
 @extends('admin_layout.master')
 
 @section('title')
-    Add Product
+    Product
 @endsection
 
 @section('content')
@@ -32,45 +32,62 @@
                     <div class="col-md-12">
                         <!-- jquery validation -->
                         <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">Add product</h3>
-                            </div>
+                            @include('includes.forms.form-header', [
+                                'entity' => $product,
+                                'editTitle' => 'Product edit : ' . $product->name,
+                                'newTitle' => 'New product',
+                                'listUrl' => route('admin.product.index')
+                            ])
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form id="quickForm">
+                            <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data">
+                                @if($product->id)
+                                    @method('PUT')
+                                @endif
+                                @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Product name</label>
-                                        <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" placeholder="Enter product name">
+                                        <label for="product.name">Product name</label>
+                                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                                               value="{{ old('product.name', $product->name) }}" placeholder="Enter product name">
+                                        @error('name')
+                                        <small class="text-danger"><em>{{ $message }}</em></small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Product price</label>
-                                        <input type="number" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="Enter product price" min="1">
+                                        <label for="product.price">Product price</label>
+                                        <input type="number" name="price" class="form-control @error('price') is-invalid @enderror"
+                                               value="{{ old('product.price', $product->price) }}" placeholder="Enter product price" min="1">
+                                        @error('price')
+                                        <small class="text-danger"><em>{{ $message }}</em></small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Product category</label>
-                                        <select class="form-control select2" style="width: 100%;">
-                                            <option selected="selected">Fruit</option>
-                                            <option>Juice</option>
-                                            <option>Vegetable</option>
+                                        <select name="category_id" class="form-control select2" style="width: 100%;">
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}" id="product_category_{{$category->id}}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <label for="exampleInputFile">Product image</label>
+                                    <label for="product.image">Product image</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                     </div>
+                                    @error('image')
+                                    <small class="text-danger"><em>{{ $message }}</em></small>
+                                    @enderror
                                 </div>
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- <button type="submit" class="btn btn-success">Submit</button> -->
-                                    <input type="submit" class="btn btn-success" value="Save">
-                                </div>
+                                @include('includes.forms.form-footer', [
+                                    'entity' => $product
+                                ])
                             </form>
                         </div>
                         <!-- /.card -->

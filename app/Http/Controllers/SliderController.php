@@ -6,7 +6,6 @@ use App\Http\Requests\Admin\SliderRequest;
 use App\Models\Slider;
 use App\Services\Admin\SliderService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
