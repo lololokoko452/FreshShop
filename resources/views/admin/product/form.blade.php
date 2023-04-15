@@ -63,6 +63,14 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
+                                        <label for="product.description">Product description</label>
+                                        <input type="text" name="description" class="form-control @error('description') is-invalid @enderror"
+                                               value="{{ old('product.description', $product->description) }}" placeholder="Enter product description" min="1">
+                                        @error('description')
+                                        <small class="text-danger"><em>{{ $message }}</em></small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
                                         <label>Product category</label>
                                         <select name="category_id" class="form-control select2" style="width: 100%;">
                                             @foreach($categories as $category)

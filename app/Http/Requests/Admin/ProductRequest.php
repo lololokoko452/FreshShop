@@ -23,6 +23,9 @@ class ProductRequest extends FormRequest
             ],
             'price' => [
                 'required'
+            ],
+            'description' => [
+                'required'
             ]
         ];
         if ($this->isMethod('POST')) {
@@ -50,6 +53,7 @@ class ProductRequest extends FormRequest
             'name.required' => 'The name field is required.',
             'name.unique' => 'This name is already used',
             'price.required' => 'The price field is required.',
+            'description.required' => 'The description field is required.',
             'image.required' => 'The image field is required.',
             'image.image' => 'The file must be an image.',
             'image.max' => 'The image may not be greater than 2048 kilobytes.',
