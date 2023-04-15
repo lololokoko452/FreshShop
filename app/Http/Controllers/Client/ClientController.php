@@ -48,9 +48,9 @@ class ClientController extends Controller
         try {
             $clientService->saveNewClient($request);
 
-            return redirect()->route('client.signin')->with('success', 'Account created successfuly');
+            return redirect()->route('client.signin')->with('success', 'Account created successfully, now you can sign in !');
         } catch (\Exception $e) {
-            return redirect()->route('client.register')->with('error', 'Error');
+            return redirect()->route('client.register')->with('error', 'Error : try another email');
         }
     }
 
@@ -60,7 +60,7 @@ class ClientController extends Controller
         if ($client){
             if (Hash::check($request->password, $client->password)){
                 Session::put('client', $client);
-                return redirect()->route("client.shop");
+                return redirect()->route("client.shop")->with('success', 'Log In Successfully');
             }
         }
         return redirect()->route("client.signin")->with('error', 'Wrong email or password');

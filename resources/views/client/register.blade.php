@@ -97,3 +97,18 @@
     </div>
     <!-- End Cart -->
 @endsection
+
+@if(Session::has("error"))
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Swal.fire({
+                title: '{{ Session::get("error") }}',
+                icon: 'warning',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                toast: true,
+            });
+        });
+    </script>
+@endif

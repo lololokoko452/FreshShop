@@ -24,7 +24,15 @@
                 <div class="login-box ">
                     <div id="basic" class="selectpicker show-tick" data-placeholder="Sign In">
                         @if(Session::has('client'))
-                            <a class="text-white" href="{{ route("client.logout") }}"><i class="fa fa-user s_color"></i> Log Out</a>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" >
+                                    <i class="fa fa-user s_color"></i> Profile
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route("client.orders", ['client' => Session::get('client')]) }}">Orders</a>
+                                    <a class="dropdown-item" href="{{ route("client.logout") }}">Déconnexion</a>
+                                </div>
+                            </div>
                         @else
                             <a class="text-white" href="{{ route("client.signin") }}"><i class="fa fa-user s_color"></i> Sign In</a>
                         @endif

@@ -71,9 +71,9 @@
                                                         <img src="{{ asset('storage/product_images/' . $product->imageName) }}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View (TODO)"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare (TODO)"><i class="fas fa-sync-alt"></i></a></li>
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist (TODO)"><i class="far fa-heart"></i></a></li>
                                                             </ul>
                                                             <a class="cart" href="{{ route("client.cart.add", compact("product")) }}">Add to Cart</a>
                                                         </div>
@@ -129,13 +129,13 @@
                     <div class="product-categori">
                         <div class="search-product">
                             <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
+                                <input class="form-control" value="TODO" placeholder="Search here..." type="text">
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
                         <div class="filter-sidebar-left">
                             <div class="title-left">
-                                <h3>Categories</h3>
+                                <h3>Categories (TODO)</h3>
                             </div>
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 <div class="list-group-collapse sub-men">
@@ -155,4 +155,21 @@
         </div>
     </div>
     <!-- End Shop Page -->
+@endsection
+
+@section('scripts')
+    @if(Session::has("success"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: '{{ Session::get("success") }}',
+                    icon: 'success',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
+                });
+            });
+        </script>
+    @endif
 @endsection

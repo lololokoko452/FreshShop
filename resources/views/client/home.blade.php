@@ -134,7 +134,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>latest blog</h1>
+                        <h1>latest blog (TODO)</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
                     </div>
                 </div>
@@ -198,4 +198,35 @@
         </div>
     </div>
     <!-- End Blog  -->
+@endsection
+
+@section('scripts')
+    @if(Session::has("success"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: '{{ Session::get("success") }}',
+                    icon: 'success',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
+                });
+            });
+        </script>
+    @endif
+    @if(Session::has("error"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: '{{ Session::get("error") }}',
+                    icon: 'warning',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
+                });
+            });
+        </script>
+    @endif
 @endsection

@@ -94,25 +94,34 @@
     <!-- End Cart -->
 @endsection
 
-@section('styles')
-    <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
-@endsection
-
 @section('scripts')
-    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-
-    @if(Session::has("error"))
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                Swal.fire({
-                    title: '{{ Session::get("error") }}',
-                    icon: 'warning',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    toast: true,
-                });
+@if(Session::has("success"))
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Swal.fire({
+                title: '{{ Session::get("success") }}',
+                icon: 'success',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                toast: true,
             });
-        </script>
-    @endif
+        });
+    </script>
+@endif
+@if(Session::has("error"))
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            Swal.fire({
+                title: '{{ Session::get("error") }}',
+                icon: 'warning',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                toast: true,
+            });
+        });
+    </script>
+@endif
 @endsection
+
