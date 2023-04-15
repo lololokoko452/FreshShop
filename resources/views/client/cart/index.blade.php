@@ -68,7 +68,7 @@
                                             <p>$ {{ number_format($item['product_price'] * $item['qty'], 1) }}</p>
                                         </td>
                                         <td class="remove-pr">
-                                            <a href="#">
+                                            <a href="{{ route("client.cart.removeItem", ["product" => $item["item"]]) }}">
                                                 <i class="fas fa-times"></i>
                                             </a>
                                         </td>

@@ -50,11 +50,17 @@ class Cart{
 
     }
 
-    //public function removeItem($id){
-    //    $this->totalQty -= $this->items[$id]['qty'];
-    //    $this->totalPrice -= $this->items[$id]['product_price'] * $this->items[$id]['qty'];
-    //    unset($this->items[$id]);
-    //}
+    public function removeItem($idProduct){
+        foreach ($this->items as $itemId => $item) {
+            if ($item['product_id'] == $idProduct) {
+                $idItem = $itemId;
+                break; // arrête la boucle dès qu'un item est trouvé
+            }
+        }
+        $this->totalQty -= $this->items[$idItem]['qty'];
+        $this->totalPrice -= $this->items[$idItem]['product_price'] * $this->items[$idItem]['qty'];
+        unset($this->items[$idItem]);
+    }
 
 
 }

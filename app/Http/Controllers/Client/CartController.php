@@ -36,4 +36,13 @@ class CartController extends Controller
 
         return back();
     }
+
+    public function removeItem(Product $product)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;        $cart = new Cart($oldCart);
+        $cart->removeItem($product->id);
+        Session::put('cart', $cart);
+        Session::put('topCart', $cart->items);
+        return back();
+    }
 }
