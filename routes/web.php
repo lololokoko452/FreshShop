@@ -36,6 +36,7 @@ Route::group([
         ], function (){
             Route::get('/', [CartController::class, 'index'])->name('index');
             Route::get('/add/{product}', [CartController::class, 'add'])->name('add');
+            Route::put('/updateQty/{product}', [CartController::class, 'updateQty'])->name('updateQty');
     });
 });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Admin\Controller;
 use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -19,6 +20,17 @@ class CartController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product);
+        Session::put('cart', $cart);
+        Session::put('topCart', $cart->items);
+
+        return back();
+    }
+
+    public function updateQty(Request $request, Product $product)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($product->id, $request->qty);
         Session::put('cart', $cart);
         Session::put('topCart', $cart->items);
 

@@ -39,78 +39,44 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="frontend/images/img-pro-01.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="frontend/images/img-pro-02.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 60.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="#">
-                                        <img class="img-fluid" src="frontend/images/img-pro-03.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Lorem ipsum dolor sit amet
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>$ 30.0</p>
-                                </td>
-                                <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
-                                <td class="total-pr">
-                                    <p>$ 80.0</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @if(Session::has('topCart'))
+                                @foreach(Session::get('topCart') as $item)
+                                    <tr>
+                                        <td class="thumbnail-img">
+                                            <a href="#">
+                                                <img class="img-fluid" src="{{ asset('storage/product_images/' . $item['product_image']) }}" alt="" />
+                                            </a>
+                                        </td>
+                                        <td class="name-pr">
+                                            <a href="#">
+                                                {{ $item['product_name'] }}
+                                            </a>
+                                        </td>
+                                        <td class="price-pr">
+                                            <p>$ {{ number_format($item['product_price'], 1) }}</p>
+                                        </td>
+                                        <td class="quantity-box">
+                                            <form action="{{ route("client.cart.updateQty", ["product" => $item["item"]]) }}" method="POST">
+                                                @method('PUT')
+                                                @csrf
+                                                <input type="number" size="4" name="qty" value="{{ $item['qty'] }}" min="1" step="1" class="c-input-text qty text">
+                                                <br>
+                                                <input type="submit" class="btn btn-dark mt-2" value="Update">
+                                            </form>
+                                        </td>
+                                        <td class="total-pr">
+                                            <p>$ {{ number_format($item['product_price'] * $item['qty'], 1) }}</p>
+                                        </td>
+                                        <td class="remove-pr">
+                                            <a href="#">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                You don't have any products in your cart.
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -164,7 +130,7 @@
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ 388 </div>
+                            <div class="ml-auto h5"> $ {{ number_format(Session::get('cart')->totalPrice, 1) }} </div>
                         </div>
                         <hr> </div>
                 </div>
