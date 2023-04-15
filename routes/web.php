@@ -60,6 +60,7 @@ Route::group([
         Route::post('/store', [SliderController::class, 'store'])->name('store');
         Route::get('/form/{slider}', [SliderController::class, 'form'])->name('edit');
         Route::put('/update/{slider}', [SliderController::class, 'update'])->name('update');
+        Route::get('/status/{slider}', [SliderController::class, 'status'])->name('status');
 
         Route::get('/delete/{slider}', [SliderController::class, 'delete'])->name('delete');
 

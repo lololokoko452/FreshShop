@@ -44,4 +44,10 @@ class SliderService extends AdminService
 
         return $this->update($slider, $validatedData);
     }
+
+    public function updateStatus(Slider $slider): void
+    {
+        $slider->status = !$slider->status;
+        $slider->save();
+    }
 }

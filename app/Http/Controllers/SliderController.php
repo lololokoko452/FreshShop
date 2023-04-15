@@ -54,4 +54,14 @@ class SliderController extends Controller
         $slider->delete();
         return redirect()->route('admin.slider.index')->with('success', 'Slider deleted !');
     }
+
+    public function status(Slider $slider, SliderService $sliderService)
+    {
+        $sliderService->updateStatus($slider);
+        if ($slider->status){
+            return redirect()->route('admin.slider.index', $slider)->with('success', 'Status activated.');
+        } else {
+            return redirect()->route('admin.slider.index', $slider)->with('success', 'Status unactivated.');
+        }
+    }
 }

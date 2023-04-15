@@ -55,7 +55,11 @@
                                             <td>{{ $slider->description1 }}</td>
                                             <td>{{ $slider->description2 }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-warning">Activate</a>
+                                                @if($slider->status)
+                                                    <a href="{{ route("admin.slider.status", compact("slider")) }}" class="btn btn-warning">Unactivate</a>
+                                                @else
+                                                    <a href="{{ route("admin.slider.status", compact("slider")) }}" class="btn btn-success">Activate</a>
+                                                @endif
                                                 <a href="{{ route("admin.slider.edit", compact("slider")) }}" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
                                                 <a href="{{ route("admin.slider.delete", compact("slider")) }}" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
                                             </td>
