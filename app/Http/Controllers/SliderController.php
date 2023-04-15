@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SliderController extends Controller
 {
@@ -11,8 +13,10 @@ class SliderController extends Controller
         return view("admin.slider.index");
     }
 
-    public function new()
+    public function form(Slider|null $slider): View
     {
-        return view("admin.slider.new");
+        $formAction = $slider?->id ? route('admin.slider.update', $slider) : route('admin.slider.store');
+
+        return view("admin.slider.form", compact("slider", "formAction"));
     }
 }

@@ -56,15 +56,8 @@ Route::group([
         "as" => "slider."
     ], function (){
         Route::get('/index', [SliderController::class, 'index'])->name('index');
-        Route::get('/new', [SliderController::class, 'new'])->name('new');
-    });
-
-    Route::group([
-        "prefix" => "slider",
-        "as" => "slider."
-    ], function (){
-        Route::get('/index', [SliderController::class, 'index'])->name('index');
-        Route::get('/new', [SliderController::class, 'new'])->name('new');
+        Route::get('/form', [SliderController::class, 'form'])->name('new');
+        Route::post('/store', [SliderController::class, 'store'])->name('store');
     });
 
     Route::group([
