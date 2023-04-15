@@ -123,7 +123,7 @@
 
                     <li class="total">
                         <a href="{{ route('client.cart.index') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: ${{ Session::has('cart') ? number_format(Session::get('cart'), 1) : 0 }}</span>
+                        <span class="float-right"><strong>Total</strong>: ${{ Session::has('cart') ? Session::get('cart')->totalPrice : 0 }}</span>
                     </li>
                 </ul>
             </li>

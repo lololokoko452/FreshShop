@@ -101,7 +101,7 @@
 
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ {{ Session::has('cart') ? number_format(Session::get('cart'), 1) : 0 }} </div>
+                            <div class="ml-auto h5"> $ {{ Session::has('cart') ? number_format(Session::get('cart')->totalPrice, 1) : 0 }} </div>
                         </div>
                         <hr> </div>
                 </div>
