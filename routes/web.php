@@ -97,5 +97,6 @@ Route::group([
         "as" => "order."
     ], function (){
         Route::get('/index', [OrderController::class, 'index'])->name('index');
+        Route::get('/show/{order}', [OrderController::class, 'show'])->name('show');
     });
 });

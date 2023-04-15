@@ -45,22 +45,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>2020</td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2020</td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach($orders as $order)
+                                        <tr>
+                                            <td>{{ $order->created_at }}</td>
+                                            <td>{{ $order->firstname . ' ' . $order->lastname}}</td>
+                                            <td>
+                                                @if ($order->cart && $order->cart->items)
+                                                    @foreach($order->cart->items as $item)
+                                                        {{ $item["product_name"] . ", " . "Qty :" . $item["qty"] }}
+                                                    @endforeach
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('admin.order.show', compact("order")) }}" target="_blank" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
