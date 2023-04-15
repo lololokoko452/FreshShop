@@ -71,8 +71,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="title-all text-center">
-                            <h1 id="category-{{$category->id}}">{{ $category->name }}</h1>
+                        <div class="title-all text-center" id="{{ 'category-' . $category->id }}">
+                            <h1>{{ $category->name }}</h1>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare (TODO)"><i class="fas fa-sync-alt"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist (TODO)"><i class="far fa-heart"></i></a></li>
                                             </ul>
-                                            <a class="cart" href="{{ route("client.cart.add", compact("product")) }}">Add to Cart</a>
+                                            <a class="cart" href="{{ route("client.cart.add", compact("product")) }}" target="_self" onclick="addToCart()">Add to Cart</a>
                                         </div>
                                     </div>
                                     <div class="why-text">
@@ -210,4 +210,21 @@
             });
         </script>
     @endif
+    <script>
+        // Récupère la position de la dernière position de scroll
+        var lastScrollPosition = localStorage.getItem('scrollPosition');
+
+        // Si la position existe, scroll jusqu'à cette position
+        if (lastScrollPosition) {
+            window.scrollTo(0, lastScrollPosition - 200);
+            localStorage.removeItem('scrollPosition'); // Supprime la position stockée
+        }
+
+        // Fonction appelée lorsqu'un produit est ajouté au panier
+        function addToCart() {
+            var currentPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0; // Récupère la position actuelle de scroll
+            localStorage.setItem('scrollPosition', currentPosition); // Stocke la position de scroll actuelle dans le localStorage
+        }
+    </script>
+
 @endsection
