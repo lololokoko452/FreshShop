@@ -58,6 +58,8 @@ Route::group([
         Route::get('/index', [SliderController::class, 'index'])->name('index');
         Route::get('/form', [SliderController::class, 'form'])->name('new');
         Route::post('/store', [SliderController::class, 'store'])->name('store');
+        Route::get('/delete/{slider}', [SliderController::class, 'delete'])->name('delete');
+
     });
 
     Route::group([

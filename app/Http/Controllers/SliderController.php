@@ -6,6 +6,7 @@ use App\Http\Requests\Admin\SliderRequest;
 use App\Models\Slider;
 use App\Services\Admin\SliderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class SliderController extends Controller
@@ -33,5 +34,12 @@ class SliderController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin.slider.new')->with('error', 'Error');
         }
+    }
+
+    public function delete(Slider $slider)
+    {
+        Storage::delete("public/slider_images/$slider->imageName");
+        $slider->delete();
+        return redirect()->route('admin.slider.index')->with('success', 'Slider deleted !');
     }
 }
