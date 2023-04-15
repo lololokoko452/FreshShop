@@ -61,8 +61,6 @@ class Cart{
         $this->totalPrice -= $this->items[$idItem]['product_price'] * $this->items[$idItem]['qty'];
         unset($this->items[$idItem]);
     }
-
-
 }
 
 ?>
