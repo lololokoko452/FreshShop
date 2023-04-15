@@ -96,7 +96,7 @@
                     <li class="side-menu">
                         <a href="#">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
+                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : 0 }}</span>
                             <p>My Cart</p>
                         </a>
                     </li>
@@ -125,7 +125,7 @@
                         <p>1x - <span class="price">$40.00</span></p>
                     </li>
                     <li class="total">
-                        <a href="{{ route('client.cart') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                        <a href="{{ route('client.cart.index') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
                         <span class="float-right"><strong>Total</strong>: $180.00</span>
                     </li>
                 </ul>

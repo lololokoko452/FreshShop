@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SliderController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,12 +23,20 @@ use Illuminate\Support\Facades\Route;
 Route::group([
         "as" => "client.",
     ], function (){
-        Route::get('/', [ClientController::class, 'home'])->name('home');
-        Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
-        Route::get('/cart', [ClientController::class, 'cart'])->name('cart');
-        Route::get('/checkout', [ClientController::class, 'checkout'])->name('checkout');
-        Route::get('/register', [ClientController::class, 'register'])->name('register');
-        Route::get('/signin', [ClientController::class, 'signin'])->name('signin');
+
+    Route::get('/', [ClientController::class, 'home'])->name('home');
+    Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
+    Route::get('/checkout', [ClientController::class, 'checkout'])->name('checkout');
+    Route::get('/register', [ClientController::class, 'register'])->name('register');
+    Route::get('/signin', [ClientController::class, 'signin'])->name('signin');
+
+    Route::group([
+            "prefix" => "cart",
+            "as" => "cart."
+        ], function (){
+            Route::get('/', [CartController::class, 'index'])->name('index');
+            Route::get('/add/{product}', [CartController::class, 'add'])->name('add');
+    });
 });
 
 

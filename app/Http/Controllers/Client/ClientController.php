@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Admin\Controller;
 use App\Models\Product;
 use App\Models\Slider;
-use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -23,7 +23,7 @@ class ClientController extends Controller
 
     public function cart()
     {
-        return view("client.cart");
+        return view("client.cart.index");
     }
 
     public function checkout()
