@@ -26,15 +26,16 @@ Route::group([
 
     Route::get('/', [ClientController::class, 'home'])->name('home');
     Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
-    Route::get('/checkout', [ClientController::class, 'checkout'])->name('checkout');
     Route::get('/register', [ClientController::class, 'register'])->name('register');
     Route::get('/signin', [ClientController::class, 'signin'])->name('signin');
+    Route::post('/createAccount', [ClientController::class, 'createAccount'])->name('createAccount');
 
     Route::group([
             "prefix" => "cart",
             "as" => "cart."
         ], function (){
             Route::get('/', [CartController::class, 'index'])->name('index');
+            Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
             Route::get('/add/{product}', [CartController::class, 'add'])->name('add');
             Route::put('/updateQty/{product}', [CartController::class, 'updateQty'])->name('updateQty');
             Route::get('/removeItem/{product}', [CartController::class, 'removeItem'])->name('removeItem');

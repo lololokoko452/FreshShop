@@ -64,30 +64,22 @@
                         <div class="title-left">
                             <h3>Register / Already have an account ? <a href="{{ route('client.signin') }}">Sign In </a></h3>
                         </div>
-                        <form class="needs-validation" >
-                            <!-- <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="firstName">First name *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid first name is required. </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="lastName">Last name *</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid last name is required. </div>
-                                </div>
-                            </div> -->
-
+                        <form action="{{ route("client.createAccount") }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="email">Email Address *</label>
-                                <input type="email" class="form-control" id="email" placeholder="" required>
-                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="" >
+                                @error('email')
+                                <small class="text-danger"><em>{{ $message }}</em></small>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
                                 <label for="email">Password *</label>
-                                <input type="password" class="form-control" id="email" placeholder="" required>
-                                <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
+                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="email" placeholder="" >
+                                @error('password')
+                                <small class="text-danger"><em>{{ $message }}</em></small>
+                                @enderror
                             </div>
 
                             <div class="row">

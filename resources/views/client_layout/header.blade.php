@@ -96,7 +96,7 @@
                     <li class="side-menu">
                         <a href="#">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : 0 }}</span>
+                            <span class="badge">{{ count(Session::get('topCart')) }}</span>
                             <p>My Cart</p>
                         </a>
                     </li>

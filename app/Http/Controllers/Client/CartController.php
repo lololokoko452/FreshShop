@@ -15,6 +15,14 @@ class CartController extends Controller
         return view("client.cart.index");
     }
 
+    public function checkout()
+    {
+        if (Session::has('client')){
+            return view("client.checkout");
+        }
+        return redirect()->route("client.signin");
+    }
+
     public function add(Product $product)
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
