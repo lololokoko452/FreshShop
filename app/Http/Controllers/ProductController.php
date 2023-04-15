@@ -6,6 +6,8 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Services\Admin\ProductService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -32,5 +34,23 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin.product.new')->with('error', 'Error');
         }
+    }
+
+    public function update(ProductRequest $request, ProductService $productService, Product $product): RedirectResponse
+    {
+        try {
+            $productService->updateProduct($request, $product);
+
+            return redirect()->route('admin.product.index', $product)->with('success', 'Product modified.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.product.edit', $product)->with('error', 'Error');
+        }
+    }
+
+    public function delete(Product $product)
+    {
+        Storage::delete("public/product_images/$product->imageName");
+        $product->delete();
+        return redirect()->route('admin.product.index')->with('success', 'Product deleted !');
     }
 }
