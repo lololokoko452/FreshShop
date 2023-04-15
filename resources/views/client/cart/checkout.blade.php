@@ -64,23 +64,21 @@
                         <div class="title-left">
                             <h3>Billing address</h3>
                         </div>
-                        <form class="needs-validation" novalidate>
+                        <form action="{{ route("client.cart.pay") }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName">First name *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid first name is required. </div>
+                                    <input type="text" name="firstname" class="form-control" id="firstName" placeholder="" value="" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="lastName">Last name *</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid last name is required. </div>
+                                    <input type="text" name="lastname" class="form-control" id="lastName" placeholder="" value="" required>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="address">Address *</label>
-                                <input type="text" class="form-control" id="address" placeholder="" required>
-                                <div class="invalid-feedback"> Please enter your shipping address. </div>
+                                <input type="text" name="address" class="form-control" id="address" placeholder="" required>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 mb-12">
@@ -102,7 +100,7 @@
                                     <div class="font-weight-bold">Product</div>
                                     <div class="ml-auto font-weight-bold">Total</div>
                                 </div>
-                                <hr class="my-1">
+                                <!-- <hr class="my-1">
                                 <div class="d-flex">
                                     <h4>Sub Total</h4>
                                     <div class="ml-auto font-weight-bold"> $ 440 </div>
@@ -123,11 +121,11 @@
                                 <div class="d-flex">
                                     <h4>Shipping Cost</h4>
                                     <div class="ml-auto font-weight-bold"> Free </div>
-                                </div>
+                                </div> -->
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Grand Total</h5>
-                                    <div class="ml-auto h5"> $ 388 </div>
+                                    <div class="ml-auto h5"> $ {{ Session::has('cart') ? number_format(Session::get('cart'), 1) : 0 }} </div>
                                 </div>
                                 <hr> </div>
                         </div>

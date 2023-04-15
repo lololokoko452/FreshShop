@@ -86,7 +86,7 @@
                         <div class="input-group input-group-sm">
                             <input class="form-control" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">
                             <div class="input-group-append">
-                                <button class="btn btn-theme" type="button">Apply Coupon</button>
+                                <button class="btn btn-theme" type="button">Apply Coupon (TODO)</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
 
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> $ {{ number_format(Session::get('cart')->totalPrice, 1) }} </div>
+                            <div class="ml-auto h5"> $ {{ Session::has('cart') ? number_format(Session::get('cart'), 1) : 0 }} </div>
                         </div>
                         <hr> </div>
                 </div>

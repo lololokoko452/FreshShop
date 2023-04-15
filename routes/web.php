@@ -41,6 +41,7 @@ Route::group([
             Route::get('/add/{product}', [CartController::class, 'add'])->name('add');
             Route::put('/updateQty/{product}', [CartController::class, 'updateQty'])->name('updateQty');
             Route::get('/removeItem/{product}', [CartController::class, 'removeItem'])->name('removeItem');
+            Route::post('/pay', [CartController::class, 'pay'])->name('pay');
     });
 });
 
