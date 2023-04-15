@@ -46,36 +46,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>
-                                            <img src="{{ asset("backend/dist/img/user2-160x160.jpg") }}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="User Image">
-                                        </td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="#" class="btn btn-warning">Activate</a>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>
-                                            <img src="{{ asset("backend/dist/img/user2-160x160.jpg") }}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="User Image">
-                                        </td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>5</td>
-                                        <td>
-                                            <a href="#" class="btn btn-success">Unactivate</a>
-                                            <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
-                                            <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach($sliders as $slider)
+                                        <tr>
+                                            <td>{{ $slider->id }}</td>
+                                            <td>
+                                                <img src="{{ asset("storage/slider_images/" . $slider->imageName) }}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="Slider Image">
+                                            </td>
+                                            <td>{{ $slider->description1 }}</td>
+                                            <td>{{ $slider->description2 }}</td>
+                                            <td>
+                                                <a href="#" class="btn btn-warning">Activate</a>
+                                                <a href="#" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>
+                                                <a href="#" id="delete" class="btn btn-danger" ><i class="nav-icon fas fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
