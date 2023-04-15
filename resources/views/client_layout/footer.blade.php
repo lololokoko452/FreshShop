@@ -3,7 +3,7 @@
     <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-01.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-01.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -11,7 +11,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-02.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-02.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-03.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-03.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-04.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-04.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-05.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-05.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-06.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-06.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -51,7 +51,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-07.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-07.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-08.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-08.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -67,7 +67,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-09.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-09.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -75,7 +75,7 @@
         </div>
         <div class="item">
             <div class="ins-inner-box">
-                <img src="frontend/images/instagram-img-05.jpg" alt="" />
+                <img src="{{ asset('frontend/images/instagram-img-05.jpg') }}" alt="" />
                 <div class="hov-in">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
@@ -180,18 +180,19 @@
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
 <!-- ALL JS FILES -->
-<script src="frontend/js/jquery-3.2.1.min.js"></script>
-<script src="frontend/js/popper.min.js"></script>
-<script src="frontend/js/bootstrap.min.js"></script>
+<script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('frontend/js/popper.min.js') }}"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 <!-- ALL PLUGINS -->
-<script src="frontend/js/jquery.superslides.min.js"></script>
-<script src="frontend/js/bootstrap-select.js"></script>
-<script src="frontend/js/inewsticker.js"></script>
-<script src="frontend/js/bootsnav.js"></script>
-<script src="frontend/js/images-loded.min.js"></script>
-<script src="frontend/js/isotope.min.js"></script>
-<script src="frontend/js/owl.carousel.min.js"></script>
-<script src="frontend/js/baguetteBox.min.js"></script>
-<script src="frontend/js/form-validator.min.js"></script>
-<script src="frontend/js/contact-form-script.js"></script>
-<script src="frontend/js/custom.js"></script>
+<script src="{{ asset('frontend/js/jquery.superslides.min.js') }}"></script>
+<script src="{{ asset('frontend/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('frontend/js/inewsticker.js') }}"></script>
+<script src="{{ asset('frontend/js/bootsnav.js') }}"></script>
+<script src="{{ asset('frontend/js/images-loded.min.js') }}"></script>
+<script src="{{ asset('frontend/js/isotope.min.js') }}"></script>
+<script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('frontend/js/baguetteBox.min.js') }}"></script>
+<script src="{{ asset('frontend/js/form-validator.min.js') }}"></script>
+<script src="{{ asset('frontend/js/contact-form-script.js') }}"></script>
+<script src="{{ asset('frontend/js/custom.js') }}"></script>
+

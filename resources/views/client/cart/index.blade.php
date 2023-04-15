@@ -22,7 +22,7 @@
     <!-- End All Title Box -->
 
     <!-- Start Cart  -->
-    @if(Session::get('topCart') !== [])
+    @if(Session::has('topCart') && Session::get('topCart') !== [])
     <div class="cart-box-main">
         <div class="container">
             <div class="row">

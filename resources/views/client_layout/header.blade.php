@@ -15,18 +15,20 @@
                 </div>
                 <div class="our-link">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
                         <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
                         <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="login-box">
-                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                        <option>Register Here</option>
-                        <option>Sign In</option>
-                    </select>
+                <div class="login-box ">
+                    <div id="basic" class="selectpicker show-tick" data-placeholder="Sign In">
+                        @if(Session::has('client'))
+                            <a class="text-white" href="{{ route("client.logout") }}"><i class="fa fa-user s_color"></i> Log Out</a>
+                        @else
+                            <a class="text-white" href="{{ route("client.signin") }}"><i class="fa fa-user s_color"></i> Sign In</a>
+                        @endif
+                    </div>
                 </div>
                 <div class="text-slid-box">
                     <div id="offer-box" class="carouselTicker">
@@ -74,7 +76,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="{{ route('client.home') }}"><img src="frontend/images/logo.png" class="logo" alt=""></a>
+                <a class="navbar-brand" href="{{ route('client.home') }}"><img src="{{ asset("frontend/images/logo.png") }}" class="logo" alt=""></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -96,7 +98,7 @@
                     <li class="side-menu">
                         <a href="#">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="badge">{{ count(Session::get('topCart')) }}</span>
+                            <span class="badge">{{ is_array(Session::get('topCart')) ? count(Session::get('topCart')) : 0 }}</span>
                             <p>My Cart</p>
                         </a>
                     </li>
@@ -121,7 +123,7 @@
 
                     <li class="total">
                         <a href="{{ route('client.cart.index') }}" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: ${{ Session::get('cart')->totalPrice }}</span>
+                        <span class="float-right"><strong>Total</strong>: ${{ is_array(Session::get('topCart')) ? Session::get('cart')->totalPrice : 0 }}</span>
                     </li>
                 </ul>
             </li>

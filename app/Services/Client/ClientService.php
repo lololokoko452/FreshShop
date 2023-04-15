@@ -12,7 +12,7 @@ class ClientService extends AdminService
     public function saveNewClient(ClientRequest $request)
     {
         $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
+        $data['password'] = bcrypt($data['password']);
         return $this->create(Client::class, $data);
     }
 

@@ -64,29 +64,17 @@
                         <div class="title-left">
                             <h3>Sign In / Don't have an account ? <a href="{{ route('client.register') }}">Register</a></h3>
                         </div>
-                        <form class="needs-validation" >
-                            <!-- <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="firstName">First name *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid first name is required. </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="lastName">Last name *</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                    <div class="invalid-feedback"> Valid last name is required. </div>
-                                </div>
-                            </div> -->
-
+                        <form action="{{ route("client.accessAccount") }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="email">Email Address *</label>
-                                <input type="email" class="form-control" id="email" placeholder="" required>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="" required>
                                 <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="email">Password *</label>
-                                <input type="password" class="form-control" id="email" placeholder="" required>
+                                <input type="password" name="password" class="form-control" id="email" placeholder="" required>
                                 <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
                             </div>
 
@@ -104,4 +92,27 @@
         </div>
     </div>
     <!-- End Cart -->
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" href="/node_modules/sweetalert2/dist/sweetalert2.min.css">
+@endsection
+
+@section('scripts')
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    @if(Session::has("error"))
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Swal.fire({
+                    title: '{{ Session::get("error") }}',
+                    icon: 'warning',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    toast: true,
+                });
+            });
+        </script>
+    @endif
 @endsection

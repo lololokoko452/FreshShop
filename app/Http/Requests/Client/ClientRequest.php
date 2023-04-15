@@ -20,7 +20,6 @@ class ClientRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('clients')->ignore($entityId)
             ],
             'password' => [
                 'required',
