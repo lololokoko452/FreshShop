@@ -10,14 +10,15 @@ class ClientController extends Controller
 {
     public function home()
     {
-        $sliders = Slider::all();
+        $sliders = Slider::where('status', true)->get();
         $products = Product::all();
         return view("client.home", compact("sliders", "products"));
     }
 
     public function shop()
     {
-        return view("client.shop");
+        $products = Product::all();
+        return view("client.shop", compact("products"));
     }
 
     public function cart()
