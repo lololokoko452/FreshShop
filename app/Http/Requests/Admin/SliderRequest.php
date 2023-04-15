@@ -16,19 +16,31 @@ class SliderRequest extends FormRequest
     {
         $entityId = $this->route()->parameter('slider')?->id;
 
-        return [
+        $rules = [
             'description1' => [
                 'required'
             ],
             'description2' => [
                 'required'
-            ],
-            'image' => [
+            ]
+        ];
+        if ($this->isMethod('POST')) {
+            // Add validation rule for image when creating a new slider
+            $rules['image'] = [
                 'required',
                 'image',
                 Rule::file()->max(2048),
-            ],
-        ];
+            ];
+        } else {
+            // Add validation rule for image when updating a slider
+            $rules['image'] = [
+                'nullable',
+                'image',
+                Rule::file()->max(2048),
+            ];
+        }
+
+        return $rules;
     }
 
     public function messages()

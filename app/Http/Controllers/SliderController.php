@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\SliderRequest;
 use App\Models\Slider;
 use App\Services\Admin\SliderService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -33,6 +34,17 @@ class SliderController extends Controller
             return redirect()->route('admin.slider.index')->with('success', 'Slider created successfuly');
         } catch (\Exception $e) {
             return redirect()->route('admin.slider.new')->with('error', 'Error');
+        }
+    }
+
+    public function update(SliderRequest $request, SliderService $sliderService, Slider $slider): RedirectResponse
+    {
+        try {
+            $sliderService->updateSlider($request, $slider);
+
+            return redirect()->route('admin.slider.index', $slider)->with('success', 'Slider modified.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.slider.edit', $slider)->with('error', 'Error');
         }
     }
 
