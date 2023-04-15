@@ -39,6 +39,7 @@
                                     <thead>
                                     <tr>
                                         <th>Num.</th>
+                                        <th>Picture</th>
                                         <th>Category Name</th>
                                         <th>Actions</th>
                                     </tr>
@@ -47,6 +48,9 @@
                                         @foreach($categories as $category)
                                             <tr>
                                                 <td>{{ $category->id }}</td>
+                                                <td>
+                                                    <img src="{{ asset("storage/category_images/" . $category->imageName) }}" style="height : 50px; width : 50px" class="img-circle elevation-2" alt="Slider Image">
+                                                </td>
                                                 <td>{{ $category->name }}</td>
                                                 <td>
                                                     <a href="{{ route("admin.category.edit", compact("category")) }}" class="btn btn-primary"><i class="nav-icon fas fa-edit"></i></a>

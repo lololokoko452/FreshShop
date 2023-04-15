@@ -16,19 +16,39 @@ class CategoryRequest extends FormRequest
     {
         $entityId = $this->route()->parameter('category')?->id;
 
-        return [
+        $rules = [
             'name' => [
                 'required',
                 Rule::unique('categories', 'name')->ignore($entityId),
-            ],
+            ]
         ];
+        if ($this->isMethod('POST')) {
+            // Add validation rule for image when creating a new slider
+            $rules['image'] = [
+                'required',
+                'image',
+                Rule::file()->max(2048),
+            ];
+        } else {
+            // Add validation rule for image when updating a slider
+            $rules['image'] = [
+                'nullable',
+                'image',
+                Rule::file()->max(2048),
+            ];
+        }
+
+        return $rules;
     }
 
     public function messages()
     {
         return [
             'name.required' => 'The category name is required.',
-            'name.unique' => 'The gategory name must be unique.'
+            'name.unique' => 'The category name must be unique.',
+            'image.required' => 'The image field is required.',
+            'image.image' => 'The file must be an image.',
+            'image.max' => 'The image may not be greater than 2048 kilobytes.'
         ];
     }
 }

@@ -40,7 +40,7 @@
                             ])
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form action="{{ $formAction }}" method="POST">
+                            <form action="{{ $formAction }}" method="POST" enctype="multipart/form-data">
                                 @if($category->id)
                                     @method('PUT')
                                 @endif
@@ -54,6 +54,19 @@
                                         <small class="text-danger"><em>{{ $message }}</em></small>
                                         @enderror
                                     </div>
+                                    <label for="category.image">Category image</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                    </div>
+                                    @error('image')
+                                    <small class="text-danger"><em>{{ $message }}</em></small>
+                                    @enderror
                                 </div>
                                 <!-- /.card-body -->
                                 @include('includes.forms.form-footer', [
