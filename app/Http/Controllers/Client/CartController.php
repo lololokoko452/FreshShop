@@ -32,7 +32,7 @@ class CartController extends Controller
         Session::put('cart', $cart);
         Session::put('topCart', $cart->items);
 
-        return back();
+        return back()->with('success', 'This article is now in your cart');
     }
 
     public function updateQty(Request $request, Product $product)

@@ -157,19 +157,3 @@
     <!-- End Shop Page -->
 @endsection
 
-@section('scripts')
-    @if(Session::has("success"))
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                Swal.fire({
-                    title: '{{ Session::get("success") }}',
-                    icon: 'success',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    toast: true,
-                });
-            });
-        </script>
-    @endif
-@endsection

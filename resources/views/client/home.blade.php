@@ -182,34 +182,6 @@
 @endsection
 
 @section('scripts')
-    @if(Session::has("success"))
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                Swal.fire({
-                    title: '{{ Session::get("success") }}',
-                    icon: 'success',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    toast: true,
-                });
-            });
-        </script>
-    @endif
-    @if(Session::has("error"))
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                Swal.fire({
-                    title: '{{ Session::get("error") }}',
-                    icon: 'warning',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    toast: true,
-                });
-            });
-        </script>
-    @endif
     <script>
         // Récupère la position de la dernière position de scroll
         var lastScrollPosition = localStorage.getItem('scrollPosition');
