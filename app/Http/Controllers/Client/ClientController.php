@@ -49,12 +49,17 @@ class ClientController extends Controller
     public function orders($clientId)
     {
         $client = Client::where('id', $clientId)->first();
-        $orders = $client->orders;
-        $orders->transform(function ($order, $key){
-            $order->cart = unserialize($order->cart);
-            return $order;
-        });
-        return view('client.orders', compact("client", "orders"));
+        if(Session::has('client') && Session::get('client')->id == $clientId){
+            $orders = $client->orders;
+            $orders->transform(function ($order, $key){
+                $order->cart = unserialize($order->cart);
+                return $order;
+            });
+            return view('client.orders', compact("client", "orders"));
+        } else {
+            return redirect()->route('client.shop')->with('error', 'You can\'t access to this page');
+        }
+
     }
 
     public function createAccount(ClientRequest $request, ClientService $clientService)
