@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('address');
+            $table->foreignId('client_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->mediumText('cart');
             $table->timestamps();
         });
@@ -26,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table("orders", function(Blueprint $table){
+            $table->dropForeign("client_id");
+        });
         Schema::dropIfExists('orders');
     }
 };

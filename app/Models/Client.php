@@ -13,4 +13,9 @@ class Client extends Model
       'email',
       'password'
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

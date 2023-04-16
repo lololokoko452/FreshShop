@@ -1,4 +1,4 @@
-@extends('admin_layout.master')
+@extends('client_layout.master')
 
 @section('title')
     Orders
@@ -57,7 +57,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin.order.show', compact("order")) }}" target="_blank" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
+                                                <a href="{{ route('client.order.show', compact("order")) }}" target="_blank" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

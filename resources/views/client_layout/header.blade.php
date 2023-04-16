@@ -29,8 +29,8 @@
                                     <i class="fa fa-user s_color"></i> Profile
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route("client.orders", ['client' => Session::get('client')]) }}">Orders</a>
-                                    <a class="dropdown-item" href="{{ route("client.logout") }}">Déconnexion</a>
+                                    <a class="dropdown-item" href="{{ route("client.orders", ['clientId' => Session::get('client')]) }}">Orders</a>
+                                    <a class="dropdown-item" href="{{ route("client.logout") }}">Log Out</a>
                                 </div>
                             </div>
                         @else

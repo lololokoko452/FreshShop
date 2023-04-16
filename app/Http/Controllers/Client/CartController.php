@@ -48,7 +48,8 @@ class CartController extends Controller
 
     public function removeItem(Product $product)
     {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;        $cart = new Cart($oldCart);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
         $cart->removeItem($product->id);
         Session::put('cart', $cart);
         Session::put('topCart', $cart->items);
@@ -64,6 +65,7 @@ class CartController extends Controller
         $order->firstname = $request->firstname;
         $order->lastname = $request->lastname;
         $order->address = $request->address;
+        $order->client_id = Session::get('client')->id;
         $order->cart = serialize($cart);
 
         $order->save();

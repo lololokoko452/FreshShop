@@ -31,7 +31,8 @@ Route::group([
     Route::post('/createAccount', [ClientController::class, 'createAccount'])->name('createAccount');
     Route::post('/accessAccount', [ClientController::class, 'accessAccount'])->name('accessAccount');
     Route::get('/logout', [ClientController::class, 'logout'])->name('logout');
-    Route::get('/orders/{client}', [ClientController::class, 'orders'])->name('orders');
+    Route::get('/orders/{clientId}', [ClientController::class, 'orders'])->name('orders');
+    Route::get('/show/{order}', [ClientController::class, 'show'])->name('order.show');
 
     Route::group([
             "prefix" => "cart",
