@@ -6,7 +6,7 @@
 
 @section('content')
     <!-- Start Top Search -->
-    <form>
+    <!--<form>
         <div class="top-search">
             <div class="container">
                 <div class="input-group">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form>-->
     <!-- End Top Search -->
 
     <!-- Start All Title Box -->
@@ -43,7 +43,11 @@
                     <div class="right-product-box">
                         <div class="product-item-filter row">
                             <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <p>Showing all {{ count($products) }} results</p>
+                                @if($search)
+                                    <p>Search result of "{{ $search }}"</p>
+                                @else
+                                    <p>Showing all {{ count($products) }} results</p>
+                                @endif
                             </div>
                             <div class="col-12 col-sm-4 text-center text-sm-right">
                                 <ul class="nav nav-tabs ml-auto">
@@ -61,30 +65,34 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        @foreach($products as $product)
-                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="products-single fix">
-                                                    <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">Sale</p>
+                                        @if(count($products))
+                                            @foreach($products as $product)
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Sale</p>
+                                                            </div>
+                                                            <img src="{{ asset('storage/product_images/' . $product->imageName) }}" class="img-fluid" alt="Image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View (TODO)"><i class="fas fa-eye"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare (TODO)"><i class="fas fa-sync-alt"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist (TODO)"><i class="far fa-heart"></i></a></li>
+                                                                </ul>
+                                                                <a class="cart" href="{{ route("client.cart.add", compact("product")) }}">Add to Cart</a>
+                                                            </div>
                                                         </div>
-                                                        <img src="{{ asset('storage/product_images/' . $product->imageName) }}" class="img-fluid" alt="Image">
-                                                        <div class="mask-icon">
-                                                            <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View (TODO)"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare (TODO)"><i class="fas fa-sync-alt"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist (TODO)"><i class="far fa-heart"></i></a></li>
-                                                            </ul>
-                                                            <a class="cart" href="{{ route("client.cart.add", compact("product")) }}">Add to Cart</a>
+                                                        <div class="why-text">
+                                                            <h4>{{ $product->name }}</h4>
+                                                            <h5>${{ $product->price }}</h5>
                                                         </div>
-                                                    </div>
-                                                    <div class="why-text">
-                                                        <h4>{{ $product->name }}</h4>
-                                                        <h5>${{ $product->price }}</h5>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        @else
+                                            <p>No products available.</p>
+                                        @endif
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">

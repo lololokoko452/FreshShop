@@ -26,6 +26,7 @@ Route::group([
 
     Route::get('/', [ClientController::class, 'home'])->name('home');
     Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
+    Route::post('/search', [ClientController::class, 'search'])->name('search');
     Route::get('/register', [ClientController::class, 'register'])->name('register');
     Route::get('/signin', [ClientController::class, 'signin'])->name('signin');
     Route::post('/createAccount', [ClientController::class, 'createAccount'])->name('createAccount');

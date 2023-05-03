@@ -30,6 +30,15 @@ class ClientController extends Controller
         return view("client.shop", compact("products"));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $products = Product::where('name', 'like', "%$search%")->get();
+
+        return view('client.shop', compact('products', 'search'));
+    }
+
     public function register()
     {
         return view("client.register");

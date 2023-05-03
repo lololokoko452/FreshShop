@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryService extends AdminService
-{
+{ 
     public function saveNewCategory(CategoryRequest $request)
     {
         $validatedData = $request->validated();
