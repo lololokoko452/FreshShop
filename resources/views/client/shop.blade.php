@@ -43,8 +43,9 @@
                     <div class="right-product-box">
                         <div class="product-item-filter row">
                             <div class="col-12 col-sm-8 text-center text-sm-left">
-                                @if($search)
+                                @if(!empty($search))
                                     <p>Search result of "{{ $search }}"</p>
+                                    <a class="badge badge-danger mt-2" href="{{ route('client.shop') }}"> X </a>
                                 @else
                                     <p>Showing all {{ count($products) }} results</p>
                                 @endif
