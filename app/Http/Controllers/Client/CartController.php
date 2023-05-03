@@ -21,7 +21,7 @@ class CartController extends Controller
         if (Session::has('client')){
             return view("client.cart.checkout");
         }
-        return redirect()->route("client.signin")->with('error', 'You have to log in to continue.');
+        return redirect()->route("client.user.signin")->with('error', 'You have to log in to continue.');
     }
 
     public function add(Product $product)

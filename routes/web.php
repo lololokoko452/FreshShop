@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\OrderController as OrderControllerAlias;
 use App\Http\Controllers\Client\ShopController;
+use App\Http\Controllers\Client\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,15 +28,6 @@ Route::group([
     ], function (){
 
     Route::get('/', [ClientController::class, 'home'])->name('home');
-    Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
-    Route::post('/search', [ClientController::class, 'search'])->name('search');
-    Route::get('/register', [ClientController::class, 'register'])->name('register');
-    Route::get('/signin', [ClientController::class, 'signin'])->name('signin');
-    Route::post('/createAccount', [ClientController::class, 'createAccount'])->name('createAccount');
-    Route::post('/accessAccount', [ClientController::class, 'accessAccount'])->name('accessAccount');
-    Route::get('/logout', [ClientController::class, 'logout'])->name('logout');
-    Route::get('/orders/{clientId}', [ClientController::class, 'orders'])->name('orders');
-    Route::get('/show/{order}', [ClientController::class, 'show'])->name('order.show');
 
     Route::group([
         "prefix" => "shop",
@@ -42,6 +35,25 @@ Route::group([
     ], function (){
         Route::get('/', [ShopController::class, 'index'])->name('index');
         Route::post('/search', [ShopController::class, 'search'])->name('search');
+    });
+
+    Route::group([
+        "prefix" => "order",
+        "as" => "order."
+    ], function (){
+        Route::get('/{clientId}', [OrderControllerAlias::class, 'index'])->name('index');
+        Route::get('/show/{order}', [OrderControllerAlias::class, 'show'])->name('show');
+    });
+
+    Route::group([
+        "prefix" => "user",
+        "as" => "user."
+    ], function (){
+        Route::get('/register', [UserController::class, 'register'])->name('register');
+        Route::get('/signin', [UserController::class, 'signin'])->name('signin');
+        Route::post('/createAccount', [UserController::class, 'createAccount'])->name('createAccount');
+        Route::post('/accessAccount', [UserController::class, 'accessAccount'])->name('accessAccount');
+        Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     });
 
     Route::group([
@@ -56,7 +68,6 @@ Route::group([
             Route::post('/pay', [CartController::class, 'pay'])->name('pay');
     });
 });
-
 
 //Admin Controller
 Route::group([

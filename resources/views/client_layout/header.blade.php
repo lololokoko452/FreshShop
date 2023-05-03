@@ -29,12 +29,12 @@
                                     <i class="fa fa-user s_color"></i> Profile
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route("client.orders", ['clientId' => Session::get('client')]) }}">Orders</a>
-                                    <a class="dropdown-item" href="{{ route("client.logout") }}">Log Out</a>
+                                    <a class="dropdown-item" href="{{ route("client.order.index", ['clientId' => Session::get('client')]) }}">Orders</a>
+                                    <a class="dropdown-item" href="{{ route("client.user.logout") }}">Log Out</a>
                                 </div>
                             </div>
                         @else
-                            <a class="text-white" href="{{ route("client.signin") }}"><i class="fa fa-user s_color"></i> Sign In</a>
+                            <a class="text-white" href="{{ route("client.user.signin") }}"><i class="fa fa-user s_color"></i> Sign In</a>
                         @endif
                     </div>
                 </div>
@@ -140,7 +140,7 @@
     </nav>
     <!-- End Navigation -->
     <!-- Start Top Search -->
-    <form action="{{ route('client.search') }}" method="POST">
+    <form action="{{ route('client.shop.search') }}" method="POST">
         @csrf
         <div class="top-search">
             <div class="container">

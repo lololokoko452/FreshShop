@@ -62,9 +62,9 @@
                 <div class="col-sm-6 col-lg-6 mb-3 offset-sm-3 offset-lg-3">
                     <div class="Account-address">
                         <div class="title-left">
-                            <h3>Register / Already have an account ? <a href="{{ route('client.signin') }}">Sign In </a></h3>
+                            <h3>Register / Already have an account ? <a href="{{ route('client.user.signin') }}">Sign In </a></h3>
                         </div>
-                        <form action="{{ route("client.createAccount") }}" method="POST">
+                        <form action="{{ route("client.user.createAccount") }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="email">Email Address *</label>
