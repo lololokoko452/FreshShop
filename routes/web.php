@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Client\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,14 @@ Route::group([
     Route::get('/logout', [ClientController::class, 'logout'])->name('logout');
     Route::get('/orders/{clientId}', [ClientController::class, 'orders'])->name('orders');
     Route::get('/show/{order}', [ClientController::class, 'show'])->name('order.show');
+
+    Route::group([
+        "prefix" => "shop",
+        "as" => "shop."
+    ], function (){
+        Route::get('/', [ShopController::class, 'index'])->name('index');
+        Route::post('/search', [ShopController::class, 'search'])->name('search');
+    });
 
     Route::group([
             "prefix" => "cart",

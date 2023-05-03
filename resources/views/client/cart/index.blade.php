@@ -116,7 +116,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Your cart is empty.</h1>
-                        <a href="{{ route("client.shop") }}">
+                        <a href="{{ route("client.shop.index") }}">
                             <button class="btn btn-dark mb-3">Back to shop</button>
                         </a>
                     </div>

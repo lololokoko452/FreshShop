@@ -93,7 +93,7 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item {{ request()->is('/') ? "active" : "" }}"><a class="nav-link" href="{{ route('client.home') }}">Home</a></li>
                     <li class="nav-item {{ request()->is('shop') ? "active" : "" }}">
-                        <a href="{{ route('client.shop') }}" class="nav-link">SHOP</a>
+                        <a href="{{ route('client.shop.index') }}" class="nav-link">SHOP</a>
                     </li>
                 </ul>
             </div>

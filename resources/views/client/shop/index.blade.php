@@ -45,7 +45,7 @@
                             <div class="col-12 col-sm-8 text-center text-sm-left">
                                 @if(!empty($search))
                                     <p>Search result of "{{ $search }}"</p>
-                                    <a class="badge badge-danger mt-2" href="{{ route('client.shop') }}"> X </a>
+                                    <a class="badge badge-danger mt-2" href="{{ route('client.shop.index') }}"> X </a>
                                 @else
                                     <p>Showing all {{ count($products) }} results</p>
                                 @endif

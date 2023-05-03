@@ -24,21 +24,6 @@ class ClientController extends Controller
         return view("client.home", compact("sliders", "products", "categories"));
     }
 
-    public function shop()
-    {
-        $products = Product::all();
-        return view("client.shop", compact("products"));
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->input('search');
-
-        $products = Product::where('name', 'like', "%$search%")->get();
-
-        return view('client.shop', compact('products', 'search'));
-    }
-
     public function register()
     {
         return view("client.register");
@@ -66,7 +51,7 @@ class ClientController extends Controller
             });
             return view('client.orders', compact("client", "orders"));
         } else {
-            return redirect()->route('client.shop')->with('error', 'You can\'t access to this page');
+            return redirect()->route('client.shop.index')->with('error', 'You can\'t access to this page');
         }
 
     }
@@ -88,7 +73,7 @@ class ClientController extends Controller
         if ($client){
             if (Hash::check($request->password, $client->password)){
                 Session::put('client', $client);
-                return redirect()->route("client.shop")->with('success', 'Log In Successfully');
+                return redirect()->route("client.shop.index")->with('success', 'Log In Successfully');
             }
         }
         return redirect()->route("client.signin")->with('error', 'Wrong email or password');
